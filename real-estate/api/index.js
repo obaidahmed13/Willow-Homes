@@ -10,7 +10,7 @@ mongoose
     .connect(process.env.MONGO)
     .then(()=> {
         console.log('Connected to MongoDB');
-    }).catch((error) => {
+    }) .catch((error) => {
         console.log(error);
     });
 
@@ -22,5 +22,18 @@ app.listen(3000, () => {
 })
 
 // Api - client req, server response
+// Route for user-related API endpoints
 app.use("/api/user", userRouter);
+// Route for authentication-related API endpoints
 app.use('/api/auth', authRouter);
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+    const statusCode = err.statusCode || 500;
+    const message = err.message || 'Internal Server Error';
+    return res.status(statusCode).json({
+        success: false,
+        statusCode,
+        message,
+    })
+})

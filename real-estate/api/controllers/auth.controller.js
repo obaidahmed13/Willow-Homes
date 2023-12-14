@@ -1,8 +1,9 @@
 import User from "../models/user.model.js";
 import bcryptjs from 'bcryptjs';
+import { errorHandler } from "../utils/error.js";
 
 // Signup asynchronous function taking request (req) and response (res) parameters
-export const signup = async(req, res) => {
+export const signup = async(req, res, next) => {
 
     // Extract username, email, and password from the request body
     const{username, email, password} = req.body;
@@ -22,7 +23,7 @@ export const signup = async(req, res) => {
     } catch (error) {
 
         // If an error occurs during the database operation, send a 500 status (internal server error) and the error message
-        res.status(500).json(error.message);
+        next(error);
         
     }
 }
