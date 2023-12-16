@@ -2,12 +2,14 @@ import User from "../models/user.model.js";
 import bcryptjs from 'bcryptjs';
 import { errorHandler } from "../utils/error.js";
 import jwt from 'jsonwebtoken';
+// Authenticating form data 
+
 // Signup asynchronous function taking request (req) and response (res) parameters
 export const signup = async(req, res, next) => {
 
     // Extract username, email, and password from the request body
     const{username, email, password} = req.body;
-
+    
     // Hashed password, added salt, using bcrypt
     const hashedPassword = bcryptjs.hashSync(password,10);
 
@@ -29,8 +31,11 @@ export const signup = async(req, res, next) => {
 }
 
 export const signin = async (req, res, next) => {
+    // Requesting email , passworf from body
     const {email, password} = req.body;
+    
     try {
+        // Create validUser variable with the user email entered
         const validUser = await User.findOne({email});
         if (!validUser) return next(errorHandler(404, 'User not found'));
         const validPassword = bcryptjs.compareSync(password, validUser.password)

@@ -41,17 +41,34 @@ export const Signup = () => {
   };
 
   return (
-    <div className="p-3 max-w-lg mx-auto">
-      <h1 className="text-center font-semibold mt-7 text-3xl">Welcome to WillowHomes</h1>
+    <div className="p-7 max-w-lg mx-auto border shadow-lg mt-4">
+      <h1 className="text-center font-semibold mt-5 text-3xl">Welcome to WillowHomes</h1>
       <p className='text-center mb-4 mt-4 opacity-60'>New Account</p>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4" >
           <label>Username: </label>
-          <input type="text" placeholder="username" className="border p-3 rounded-lg" id='username' onChange={handleChange}/>
+          <input 
+            type="text"
+            placeholder="username" 
+            className="border p-3 rounded-lg" 
+            id='username' 
+            onChange={handleChange}/>
           <label>Email: </label>
-          <input type="email" placeholder="email" className="border p-3 rounded-lg" id='email' onChange={handleChange}/>
+          <input 
+            type="email" 
+            placeholder="email" 
+            className="border p-3 rounded-lg" 
+            id='email' 
+            onChange={handleChange}/>
           <label>Password: </label>
-          <input type="password" placeholder="password" className="border p-3 rounded-lg" id='password' onChange={handleChange}/>
-        <button disabled={loading} className="bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-90">
+          <input 
+            type="password" 
+            placeholder="password" 
+            className="border p-3 rounded-lg" 
+            id='password' 
+            onChange={handleChange}/>
+        <button 
+          disabled={loading} 
+          className="bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-90">
           {loading ? 'Loading...' : 'Sign Up'}
         </button>
       </form>
