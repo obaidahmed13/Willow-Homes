@@ -23,10 +23,8 @@ app.listen(3000, () => {
     console.log('Server is running on port 3000')
 })
 
-// Api - client req, server response
-// Route for user-related API endpoints
+
 app.use("/api/user", userRouter);
-// Route for authentication-related API endpoints
 app.use('/api/auth', authRouter);
 
 // Error handling middleware
