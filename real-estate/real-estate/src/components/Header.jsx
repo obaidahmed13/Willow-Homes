@@ -29,7 +29,7 @@ export default function Header() {
                 </Link>
                 <Link to='/profile'>
                 {currentUser ? (
-                    <img className='rounded-full h-7 w-7 object-cover' src="pfp" alt="pfp" />
+                    <img className='rounded-full h-7 w-7 object-cover' src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="pfp" />
                 ) : (
                     <ul href="/home" className='hidden sm:inline text-slate-700 hover:underline'>Sign in</ul>
                 )}

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { updateUserStart, updateUserSucess, updateUserFailure, deleteUserFailure, deleteUserStart, deleteUserSuccess, signOutUserFailure, signOutUserSuccess, signOutUserStart } from "../redux/user/userSlice.js";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 export const Profile = () => {
   const [formData, setFormData] = useState({});
   const {currentUser, loading, error} = useSelector((state) => state.user);
@@ -71,7 +72,7 @@ export const Profile = () => {
     <div className="p-3 max-w-lg mx-auto">
       <h1 className="text-3xl front-semibold text-center my-5">Profile</h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <img className="rounded-full h-24 w-24 object-cover cursor-pointer self-center mt-2" src="pfp" alt="pfp" />
+        <img className="rounded-full h-24 w-24 object-cover cursor-pointer self-center mt-2" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="pfp" />
         <label>Username: </label>
         <input 
           type="text" 
@@ -98,6 +99,9 @@ export const Profile = () => {
         <button className="bg-slate-700 text-white rounded-lg p-3 uppercase hover:opacity-70">
         {loading? 'Loading...' : 'Update'}
         </button>
+        <Link to={"/create-listing"} className="bg-green-700 text-white rounded-lg p-3 uppercase hover:opacity-70 text-center">
+        Create Listing
+        </Link>
       </form>
       <div className="flex justify-between mt-5">
         <span onClick={handleDeleteUser} className="text-red-600 cursor-pointer">Delete Account</span>
