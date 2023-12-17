@@ -9,7 +9,7 @@ export const signup = async(req, res, next) => {
 
     // Extract username, email, and password from the request body
     const{username, email, password} = req.body;
-    
+
     // Hashed password, added salt, using bcrypt
     const hashedPassword = bcryptjs.hashSync(password,10);
 
@@ -28,7 +28,7 @@ export const signup = async(req, res, next) => {
         next(error);
         
     }
-}
+};
 
 export const signin = async (req, res, next) => {
     // Requesting email , passworf from body
@@ -47,4 +47,14 @@ export const signin = async (req, res, next) => {
         next(error)
         
     }
-}
+};
+
+
+export const signOut = async (req, res, next) => {
+    try {
+        res.clearCookie('access_token');
+        res.status(200).json('User has been logged out')
+    } catch (error) {
+        next(error)
+    }
+};
