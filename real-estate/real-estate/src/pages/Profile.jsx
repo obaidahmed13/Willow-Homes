@@ -6,6 +6,10 @@ import { Link } from "react-router-dom";
 export const Profile = () => {
   const [formData, setFormData] = useState({});
   const {currentUser, loading, error} = useSelector((state) => state.user);
+  // allow read;
+  // allow write: if 
+  // request.resource.size<2*1024 * 1024 &&
+  // request.resource.contentType.matches('image/.*')
   const [updateSuccess, setUpdateSuccess] = useState(false);
   const dispatch= useDispatch();
   const handleChange = (e) => {
@@ -72,7 +76,7 @@ export const Profile = () => {
     <div className="p-3 max-w-lg mx-auto">
       <h1 className="text-3xl front-semibold text-center my-5">Profile</h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <img className="rounded-full h-24 w-24 object-cover cursor-pointer self-center mt-2" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="pfp" />
+        <img  className="rounded-full h-24 w-24 object-cover cursor-pointer self-center mt-2" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="pfp" />
         <label>Username: </label>
         <input 
           type="text" 

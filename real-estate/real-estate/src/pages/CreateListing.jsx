@@ -8,16 +8,22 @@ export default function CreateListing() {
     const [formData, setFormData] = useState({
         imageUrls: [],
     })
+    const [imageUploadError, setImageUploadError] = useState(false);
     console.log(formData)
     const handleImageSubmit = () => {
-        if (files.length > 0 && files.length<7) {
+        if (files.length > 0 && files.length + formData.imageUrls.length <7) {
             const promises = [];
             for (let i=0; i< files.length; i++) {
                 promises.push(storeImage(files[i]));
             }
             Promise.all(promises).then((urls)=>{
                 setFormData({...formData, imageUrls: formData.imageUrls.concat(urls)});
+                setImageUploadError(false);
+            }).catch(()=> {
+                setImageUploadError("Image upload failed (2 mb max per image");
             });
+        } else {
+            setImageUploadError('Min: 1 - Max: 6 images per listing')
         }
     };
     const storeImage = async (file) => {
@@ -44,6 +50,14 @@ export default function CreateListing() {
           );
         });
       };
+
+      const handleRemoveImage = (index) => {
+        setFormData ({
+            ...formData,
+            // Filter creates new array that excludes element at index
+            imageUrls: formData.imageUrls.filter((_, i) => i !== index),
+        })
+      }
   return (
     <main className="p-3  max-w-4xl mx-auto">
         <h1 className="text-3xl font-semibold text-center my-6">Create a Listing</h1>
@@ -119,10 +133,18 @@ export default function CreateListing() {
                     <input onChange={(e)=> setFiles(e.target.files)} className="p-3 border border-gray-300 rounded w-full" type="file" id="images" accept='image/*' multiple />
                     <button type='button' onClick={handleImageSubmit} className="p-3 text-blue-700 border border-gray-500 rounded uppercase hover:shadow-lg">Upload</button>
                 </div>
+                <p className="text-red-600 text-sm">{imageUploadError && imageUploadError} </p>
+                {
+                    formData.imageUrls.length > 0 && formData.imageUrls.map((url, index) => (
+                        <div key={url} className=" flex justify-between p-3 border item-center">
+                            <img src={url} alt='listing image' className="w-20 h-20 object-contain" />
+                            <button type="button" onClick={() => handleRemoveImage(index)} className="p-3 text-red-600 rounder-lg uppercase hover:opacity-70">Delete</button>
+                        </div>
+                        
+                    ))
+                }
                 <button className="p-3 bg-slate-600 text-white rounded-lg uppercase hover:opacity-80">Create Listing</button>
             </div>
-            
-
         </form>
     </main>
   )
