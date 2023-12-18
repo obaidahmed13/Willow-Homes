@@ -85,7 +85,7 @@ export const Profile = () => {
       }
       setUserListings(data)
     } catch (error) {
-      showListingError(true)
+      setShowListingError(true)
     }
   }
 
@@ -165,7 +165,9 @@ export const Profile = () => {
           </Link>
           <div className="flex items-center gap-2">
             <button onClick={() => handleListingDelete(listing._id)} className="text-red-600 ">Delete</button> <span>|</span>
-            <button className="text-blue-600 ">Edit</button>
+            <Link to={`/update-listing/${listing._id}`}> 
+              <button className="text-blue-600 ">Edit</button>
+              </Link>
           </div>
         </div>
       ))}
