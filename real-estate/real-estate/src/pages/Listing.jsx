@@ -47,13 +47,13 @@ export default function Listing() {
     <main>
         {error && <p className='text-3xl my-5 text-center'>Something went wrong!</p>}
         {listing && !error && (
-        <div>
+        <div className='p-4'>
             <Swiper navigation>
                 {listing.imageUrls.map((url)=>(
                     <SwiperSlide key={url}>
                         <div 
-                            className='h-[550px]' 
-                            style={{background: `url(${url}) center no-repeat`, backgroundSize: 'cover'}}>
+                            className='h-[550px] w-[1100px] mx-auto flex justify-center items-center overflow-hidden rounded-3xl mt-2' 
+                            style={{background: `url(${url}) center no-repeat` , backgroundSize: 'cover'}}>
 
                         </div>
                     </SwiperSlide>
@@ -61,7 +61,7 @@ export default function Listing() {
             </Swiper>
             <div className=''>
                 <FaShare 
-                    className='fixed top-[13%] right-[3%] z-10 border rounded-full w-12 h-12 flex justify-center items-center cursor-pointer'  
+                    className='fixed top-[13%] right-[3%] z-10 border rounded-full w-5 h-5 flex justify-center items-center cursor-pointer'  
                     onClick={()=> {
                         navigator.clipboard.writeText(window.location.href)
                         setCopied(true)
@@ -72,7 +72,7 @@ export default function Listing() {
                 />
             </div>
             {copied && (
-                <p className='fixed top-[23%] right-[5%] z-10 rounded-md p-2'>
+                <p className='fixed top-[15%] right-[0%] z-1 rounded-md p-2 text-xs'>
                 Link copied!
               </p>
             )}
