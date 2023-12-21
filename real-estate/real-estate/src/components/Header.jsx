@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import {UserIcon} from '@heroicons/react/24/outline'
+
 
 export default function Header() {
   const {currentUser} = useSelector(state=>state.user)
@@ -29,10 +31,10 @@ export default function Header() {
 
 
   return (
-    <header className="shadow-md">
+    <header className="shadow-sm">
         <div className="flex justify-between items-center max-w-6xl mx-auto p-4">
             <Link to='/'>
-                <h1 className="font-bold text-sm sm:text-xl flex flex-wrap">
+                <h1 className="font-bold text-sm sm:text-xl flex flex-wrap mx-8">
                     <span className="text-blue-700">Willow</span>
                     <span>Homes</span>
                 </h1>
@@ -44,22 +46,22 @@ export default function Header() {
                 value={searchTerm}
                 onChange={(e)=> setSearchTerm(e.target.value)}
                 />
-                <button>
+                <button className='hover:scale-110 transition-scale duration-300'>
                     <FaSearch/>
                 </button>
             </form>
-            <ul className='flex gap-4'>
+            <ul className='flex gap-4 mx-8 '>
                 <Link to='/'>
-                    <ul className='hidden sm:inline text-slate-700 hover:underline'>Home</ul>
+                    <ul className='hidden sm:inline text-slate-700 hover:text-blue-600'>Home</ul>
                 </Link>
                 <Link to='/about'>
-                    <ul href="/home" className='hidden sm:inline text-slate-700 hover:underline'>About</ul>
+                    <ul href="/home" className='hidden sm:inline text-slate-700 hover:text-blue-600'>About</ul>
                 </Link>
                 <Link to='/profile'>
                 {currentUser ? (
-                    <img className='rounded-full h-7 w-7 object-cover' src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="pfp" />
-                ) : (
-                    <ul href="/home" className='hidden sm:inline text-slate-700 hover:underline'>Sign in</ul>
+                    <UserIcon className=' h-6 w-6 item-center hover:scale-110 transition-scale duration-300'/>
+                    ) : (
+                    <ul href="/home" className='hidden sm:inline text-slate-700 hover:text-blue-600'>Sign in</ul>
                 )}
                 </Link>
                 

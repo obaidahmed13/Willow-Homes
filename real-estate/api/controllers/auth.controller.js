@@ -19,7 +19,7 @@ export const signup = async(req, res, next) => {
         // Attempt to save the new user to the database
         await newUser.save();
         
-        // If successful, send a 201 status (resource created) and a success message
+        // If successful, send a 201 status and a success message
         res.status(201).json("User created successfully");
         
     } catch (error) {
@@ -31,7 +31,7 @@ export const signup = async(req, res, next) => {
 };
 
 export const signin = async (req, res, next) => {
-    // Requesting email , passworf from body
+    // Requesting email , password from body
     const {email, password} = req.body;
     
     try {

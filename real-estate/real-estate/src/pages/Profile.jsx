@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import { updateUserStart, updateUserSucess, updateUserFailure, deleteUserFailure, deleteUserStart, deleteUserSuccess, signOutUserFailure, signOutUserSuccess, signOutUserStart } from "../redux/user/userSlice.js";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import {UserIcon} from '@heroicons/react/24/outline'
+
 export const Profile = () => {
   const [formData, setFormData] = useState({});
   const {currentUser, loading, error} = useSelector((state) => state.user);
@@ -109,7 +111,7 @@ export const Profile = () => {
     <div className="p-3 max-w-lg mx-auto">
       <h1 className="text-3xl front-semibold text-center my-5">Profile</h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <img  className="rounded-full h-24 w-24 object-cover cursor-pointer self-center mt-2" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="pfp" />
+        <UserIcon className=' rounded-full h-16 w-16 object-cover self-center'/>
         <label>Username: </label>
         <input 
           type="text" 
@@ -136,7 +138,7 @@ export const Profile = () => {
         <button className="bg-slate-700 text-white rounded-lg p-3 uppercase hover:opacity-70">
         {loading? 'Loading...' : 'Update'}
         </button>
-        <Link to={"/create-listing"} className="bg-green-700 text-white rounded-lg p-3 uppercase hover:opacity-70 text-center">
+        <Link to={"/create-listing"} className="bg-blue-600 text-white rounded-lg p-3 uppercase hover:opacity-70 text-center">
         Create Listing
         </Link>
       </form>
@@ -145,8 +147,8 @@ export const Profile = () => {
         <span onClick={handleSignOut} className="text-red-600 cursor-pointer">Sign out</span>
       </div>
       <p className="text-red-600 mt-5">{error? error: ''}</p>
-      <p className="text-green-600 mt-5">{updateSuccess? 'Success': ''}</p>
-      <button onClick={handleShowListings} className="text-green-600 w-full">Show Listings</button>
+      <p className="text-blue-600 mt-5">{updateSuccess? 'Success': ''}</p>
+      <button onClick={handleShowListings} className="text-blue-600 w-full">Show Listings</button>
       <p>{showListingError? 'Error showing listings': ''}</p>
       
       {userListings && userListings.length>0 && (
