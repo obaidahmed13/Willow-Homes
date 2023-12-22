@@ -22,12 +22,10 @@ export default function CreateListing() {
         furnished: false,
     });
     const {currentUser} = useSelector((state) => state.user)
-    console.log(currentUser)
     const [imageUploadError, setImageUploadError] = useState(false);
     const [loading, setLoading] = useState(false)
     const [uploading, setUploading] = useState(false);
     const [error , setError] = useState(false);
-    console.log(formData)
     const handleImageSubmit = () => {
         if (files.length > 0 && files.length + formData.imageUrls.length <7) {
             setUploading(true)

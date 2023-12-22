@@ -8,7 +8,6 @@ import ListingItem from "../components/ListingItem";
 import backgroundImage from "../images/homebg4.jpg";
 import backgroundImage1 from "../images/backgstairs.jpg";
 import backgroundImage2 from "../images/homebg5.webp";
-import '../styles/Home.css'
 import {motion} from 'framer-motion'
 
 export const Home = () => {
@@ -53,7 +52,7 @@ export const Home = () => {
   return (
     <div className="mb-16">
       <div className="flex flex-col border border-gray-100 lg:flex-row  bg-white overflow-hidden">
-        <div className="flex flex-col gap-6 p-28 px-3 max-w-6xl mx-8 w-full lg:w-1/2 ">
+        <div className="flex flex-col gap-6 p-28 px-1 max-w-6xl mx-8 w-full lg:w-1/2 ">
           <motion.h1
           className="text-slate-700 font-bold text-5xl "
           initial={{y: "4rem", opacity: 0}}

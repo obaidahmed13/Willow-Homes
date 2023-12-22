@@ -55,7 +55,7 @@ export default function UpdateListing() {
                 setFormData({...formData, imageUrls: formData.imageUrls.concat(urls)});
                 setUploading(false)
             }).catch(()=> {
-                setImageUploadError("Image upload failed (2 mb max per image");
+                setImageUploadError("Image upload failed (2 mb max per image)");
                 setUploading(false)
             });
         } else {

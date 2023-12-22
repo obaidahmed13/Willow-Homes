@@ -7,8 +7,6 @@ export default function UserListing() {
     const [userListings, setUserListings] = useState([])
     const [showListingError, setShowListingError] = useState(false)
     const {currentUser} = useSelector((state) => state.user);
-    const [listingsLoaded, setListingsLoaded] = useState(false)
-
     const handleShowListings = async () => {
         
         try {
@@ -45,20 +43,15 @@ export default function UserListing() {
         handleShowListings();
       }, [])
 
-      useEffect (()=> {
-        setTimeout(()=> {
-            setListingsLoaded(true);
-        },50)
-      },[])
+
 
 
   return (
     
     <div className="p-8 ">
     <p>{showListingError ? 'Error showing listings' : ''}</p>
-    {userListings && listingsLoaded<1 && listingsLoaded? 
-    <><p className="font-semibold text-3xl">You have no listings!</p> 
-    <Link to='/create-listing' className="text-blue-500 ">Create Listing... </Link></>
+    {userListings==0? 
+    <Link to='/create-listing' className="text-blue-500 ">Create Listing... </Link>
     : ''}
     
     {userListings && userListings.length>0 && (
