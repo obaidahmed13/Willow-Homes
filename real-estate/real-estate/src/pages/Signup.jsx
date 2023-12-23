@@ -69,6 +69,7 @@ export const Signup = () => {
                 placeholder="password" 
                 className="border p-3 rounded-lg" 
                 id='password' 
+                minLength={8}
                 onChange={handleChange}/>
             <button 
               disabled={loading} 

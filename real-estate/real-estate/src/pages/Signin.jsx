@@ -60,6 +60,7 @@ export const Signin = () => {
                 placeholder="password" 
                 className="border p-3 rounded-lg" 
                 id='password' 
+                min={8}
                 onChange={handleChange}/>
             <button 
               disabled={loading} 
