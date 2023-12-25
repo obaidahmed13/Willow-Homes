@@ -16,6 +16,7 @@ import {
   } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import Contact from '../components/Contact';
+import Map from '../components/Map';
 
 export default function Listing() {
     SwiperCore.use([Navigation])
@@ -122,7 +123,10 @@ export default function Listing() {
                 {listing.furnished ? 'Furnished' : 'Unfurnished'}
               </li>
             </ul>
-            {currentUser && listing.userRef == currentUser._id && !contact && (
+            <div>
+              <Map address={listing?.address} city={listing?.city} country={listing?.country}/>
+            </div>
+            {currentUser && listing.userRef != currentUser._id && !contact && (
                 <button
                     onClick={()=> setContact(true)} 
                     className='bg-slate-700 text-white rounded-lg 
