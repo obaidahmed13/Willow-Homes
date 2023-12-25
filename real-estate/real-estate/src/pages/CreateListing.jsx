@@ -12,6 +12,8 @@ export default function CreateListing() {
         name: '',
         description: '',
         address: '',
+        city: '',
+        country: '',
         type: 'rent',
         bedrooms: 1,
         bathrooms: 1,
@@ -161,6 +163,24 @@ export default function CreateListing() {
                   required
                   onChange={handleChange} 
                   value={formData.address}
+                />
+                <input 
+                  type="text" 
+                  placeholder="City" 
+                  className="border p-3 rounded-lg" 
+                  id="city" 
+                  required
+                  onChange={handleChange} 
+                  value={formData.city}
+                />
+                <input 
+                  type="text" 
+                  placeholder="Country" 
+                  className="border p-3 rounded-lg" 
+                  id="country" 
+                  required
+                  onChange={handleChange} 
+                  value={formData.country}
                 />
                 <div className="flex gap-6 flex-wrap">
                 <div className="flex gap-2">
